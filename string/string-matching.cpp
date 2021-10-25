@@ -2,7 +2,7 @@
 #include <vector>
 
 using namespace std;
-void naive_string_matching(string, string);
+
 vector<int> build_lps_table(const string p) {
     int n = p.size();
     vector<int> lps(n);
@@ -32,7 +32,7 @@ int main() {
             if(j > 0)
                 j = lps[j-1];
             else {
-                ++i;// move i only when at the start of pattern, i.e j = 0
+                ++i; // move i only when at the start of pattern, i.e j = 0
             } 
         }
         if(j == np) {
@@ -40,21 +40,9 @@ int main() {
             j = lps[j-1];
         }
     }
-    // cout << ans << endl;
-    naive_string_matching(s, p);
+    cout << ans << endl;
 }
 
-void naive_string_matching(string text, string pattern) {
-    int occs = 0;
-    for(int i = 0; i < text.size(); ++i) {
-        bool flag = true;
-        for(int j = 0; j < pattern.size(); ++j) {
-            if(text[i+j] != pattern[j]) {
-                flag = false;
-                break;
-            }
-        }
-        if(flag) occs++;
-    }
-    cout << "we have " << occs << " occurences\n";
-}
+// Note: KMP algorithm, takes 0(m) space, and 0(n + m) time.
+// Will run for at most 2(n+m) times.
+// In lps, patterns could overlap ... e.g. ababa >> 3. (aba) is both the prefix and the suffix.
