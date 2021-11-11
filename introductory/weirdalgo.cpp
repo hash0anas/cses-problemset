@@ -8,6 +8,6 @@ int main() {
     while(n > 1) {
         cout << n << " ";
         n = (n & 1) ? (n * 3 + 1) : (n / 2);
-    }e
+    }
     cout << n << endl;
 }
