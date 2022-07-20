@@ -33,7 +33,7 @@ void dfs_dist(int cur, int par) {
         else if(height[nei] > max_height2) {
             max_height2 = height[nei];
         }
-        else { } // Intentionally do nothing.
+        else { /* Intentionally do nothing. */ }
     }
 
     // Now, find dist, as we defined it, in the pre-order of the dfs.
